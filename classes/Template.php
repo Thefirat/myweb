@@ -24,9 +24,10 @@ class Template
             <a href=""><img src="" alt="Loggan">Start</a>
             <nav>
                 <a href="/myweb/pages/products.php">Products</a>
+                <a href="/myweb/pages/cart.php">Cart</a>
                 <?php if(!$is_logged_in): ?>
                 <a href="/myweb/pages/register.php">Login</a>                
-                <a href="/myweb/pages/cart.php">Cart</a>
+               
                 <?php elseif($is_admin): ?>
                     <a href="/myweb/pages/admin.php">Admin Page</a>
                     <?php endif; ?>
