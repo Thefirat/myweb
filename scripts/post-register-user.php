@@ -13,18 +13,18 @@ if(
     strlen($_POST["password"])  > 0 &&
     $_POST["password"] === $_POST["confirm-password"]
 ){
-    $user_db = new UsersDatabase();
+    $users_db = new UsersDatabase();
     $user = new User($_POST["username"], "customer");
     $user->hash_password($_POST["password"]);
 
-    $existing_user =$user_db->get_one_by_username($_POST["username"]);
+    $existing_user =$users_db->get_one_by_username($_POST["username"]);
 
     if($existing_user){
         die("username is taken");
  
     }
     else {
-        $success = $user_db->create($user);
+        $success = $users_db->create($user);
     }
  
      // hasha lösenordet

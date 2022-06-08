@@ -1,9 +1,13 @@
 <?php
-
+require_once __DIR__ . '/User.php';
+session_start();
 class Template
 {
     public static function header($title)
     {
+        $is_logged_in = isset($_SESSION['user']);
+        $logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
+        $is_admin = $is_logged_in && ($logged_in_user->role == 'admin');
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -19,11 +23,25 @@ class Template
             <h1><?= $title ?></h1>
             <a href=""><img src="" alt="Loggan">Start</a>
             <nav>
-                <a href="/myweb/pages/products.php">Products</a>   
-                <a href="/myweb/pages/register.php">Login</a>
+                <a href="/myweb/pages/products.php">Products</a>
+                <?php if(!$is_logged_in): ?>
+                <a href="/myweb/pages/register.php">Login</a>                
                 <a href="/myweb/pages/cart.php">Cart</a>
+                <?php elseif($is_admin): ?>
+                    <a href="/myweb/pages/admin.php">Admin Page</a>
+                    <?php endif; ?>
             </nav>
-        <hr>
+            <?php if($is_logged_in): ?>
+                <p>
+                    <b>Logged in as:</b>
+                    <?= $logged_in_user->username ?>
+
+                    <form action="/myweb/scripts/post-logout.php" method="post">
+                        <input type="submit" value="Logout">
+                    </form>
+                </p>
+            <?php endif; ?>
+            <hr>
 
 
         <?php }
