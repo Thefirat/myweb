@@ -5,7 +5,7 @@ Template::header('');
 ?>
 
 <h2>Register</h2>
-<form action="/myweb/scripts/post-register.php" method="post">
+<form action="/myweb/scripts/post-register-user.php" method="post">
     <input type="text" name="username" placeholder="Username"><br>
     <input type="password" name="password" placeholder="Password"><br>
     <input type="password" name="confirm-password" placeholder="Confirm Password"><br>
