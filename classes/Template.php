@@ -16,17 +16,20 @@ class Template
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+            <link rel="stylesheet" href="/myweb/assets/style.css">
             <title>ChocoLoco</title>
+
         </head>
 
         <body>
             <h1><?= $title ?></h1>
-            <a href=""><img src="" alt="Loggan">Start</a>
+            <a href=""><img src="" alt="">ChocoLoco</a>
             <nav>
                 <a href="/myweb/pages/products.php">Products</a>
-                <a href="/myweb/pages/cart.php">Cart</a>
+                <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Shoppingbag</a>
                 <?php if(!$is_logged_in): ?>
-                <a href="/myweb/pages/register.php">Login</a>                
+                <a href="/myweb/pages/register.php"><i class="bi bi-people"></i></i>Login</a>                
                
                 <?php elseif($is_admin): ?>
                     <a href="/myweb/pages/admin.php">Admin Page</a>
