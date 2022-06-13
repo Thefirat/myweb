@@ -33,6 +33,21 @@ class UsersDatabase extends Database
     }
 
     //get_all
+    public function get_all_users()
+    {
+        $query = "SELECT * FROM users";
+        $result = mysqli_query($this->conn, $query);
+        $db_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $users = [];
+        foreach ($db_users as $db_user) {
+            $db_id = $db_user["id"];
+            $db_username = $db_user["username"];
+            $db_password_hash = $db_user["password-hash"];
+            $db_role = $db_user["role"];
+            $users[] = new User($db_username, $db_password_hash, $db_role, $db_id);
+        }
+        return $users;
+    }
     //create
     public function create(User $user)
     {

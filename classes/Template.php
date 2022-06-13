@@ -26,7 +26,6 @@ class Template
             <h1><?= $title ?></h1>
             <a href=""><img src="" alt="">ChocoLoco</a>
             <nav>
-                <a href="/myweb/pages/products.php">Products</a>
                 <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Shoppingbag</a>
                 <?php if(!$is_logged_in): ?>
                 <a href="/myweb/pages/register.php"><i class="bi bi-people"></i></i>Login</a>                

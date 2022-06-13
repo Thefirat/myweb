@@ -4,26 +4,7 @@ Template::header('');
 ?>
 
 
-    <div>
-       <img src="/myweb/assets/images/5f5f30b30bd04353d9cdb92b_champagnemousse.png" alt="chocolate">
-       <h2>Champagnemousse</h2>
-       <h3>Price: 89 kr</h3>
-    </div>
-    <div>
-       <img src="/myweb/assets/images/5f5f315927b419fe85e23f96_halloncreme.png" alt="chocolate">
-       <h2>Halloncreme</h2>
-       <h3>Price: 79 kr</h3>
-    </div>
-    <div>
-       <img src="/myweb/assets/images/5f97f787eda532ff8849d716_0H3A8336.png" alt="chocolate">
-       <h2>Lakritsdream</h2>
-       <h3>Price: 99 kr</h3>
-    </div>
-    <div>
-       <img src="/myweb/assets/images/5f97f7f6c7194f22e3f2ec0d_0H3A8347.png" alt="chocolate">
-       <h2>Lovedream</h2>
-       <h3>Price: 75 kr</h3>
-    </div>
+  
 
 
 <?php
