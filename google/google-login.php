@@ -37,6 +37,7 @@ if (isset($_GET["code"])) {
         $db = new UsersDatabase();
         
         $user->id = $db->get_google_user_id($user);
+        $user = $db->get_one_by_username($user->username);
         
         var_dump($user);
         

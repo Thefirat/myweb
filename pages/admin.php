@@ -5,7 +5,6 @@ require_once __DIR__ . '/../classes/UsersDatabase.php';
 $users_db = new UsersDatabase();
 $users = $users_db->get_all_users();
 
-var_dump($users);
 Template::header('Admin page');
 
 ?>
