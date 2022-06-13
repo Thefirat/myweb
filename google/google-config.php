@@ -13,7 +13,7 @@ $google_client->setClientId('266088433007-tdqr9sgv4katgmoq56u13ghlk3odrs6r.apps.
 $google_client->setClientSecret('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');
  
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/myweb/google/google-login.php');
+$google_client->setRedirectUri('http://localhost:8888/myweb/google/google-login.php');
  
 //
 $google_client->addScope('email');
