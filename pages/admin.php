@@ -13,6 +13,13 @@ Template::header('');
 <h2>Create Product</h2>
 <?php // CREATE PRODUCT ?>
 
+<form action="/myweb/admin-scripts/post-create-product.php" method="post" enctype="multipart/form-data">
+    <input type="text" name="product-name" placeholder="Name"><br>
+    <textarea name="product-description" placeholder="Description"></textarea><br>
+    <input type="number" name="price" placeholder="Price"><br>
+    <input type="file" name="image" accept="image/*" ><br>
+    <input type="submit" value="Save">
+</form>
 <hr>
 
 <h2>Products</h2>
