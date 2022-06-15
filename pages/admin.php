@@ -28,6 +28,7 @@ Template::header('');
     <input type="text" name="username" placeholder="Username"><br>
     <input type="password" name="password" placeholder="Password"><br>
     <select name="role">
+        <option disabled selected>Role</option>
         <option value="admin">Admin</option>
         <option value="customer">Customer</option>
     </select>

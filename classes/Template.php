@@ -8,6 +8,8 @@ class Template
         $is_logged_in = isset($_SESSION['user']);
         $logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
         $is_admin = $is_logged_in && ($logged_in_user->role == 'admin');
+
+        $cart_count = isset($_SESSION["cart"]) ? count($_SESSION["cart"]) : 0;
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -33,7 +35,8 @@ class Template
             <nav class="header-nav">
                 <a href="/myweb"><img class="header-img" src="/myweb/assets/images/hero_v17.jpg" alt=""></a>
                 <a href="/myweb"><i class="bi bi-house"></i>Home</a>
-                <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Shoppingbag</a>
+                <a href="/myweb/pages/products.php"><i class="bi bi-boxes"></i>Products</a>
+                <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Cart (<?= $cart_count ?>)</a>
                 <?php if (!$is_logged_in) : ?>
                     <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login</a>
 
@@ -49,7 +52,7 @@ class Template
                         <i><?= $logged_in_user->username ?></i>
 
                     <form action="/myweb/scripts/post-logout.php" method="post"><br>
-                        <input class="logout-btn"type="submit" value="Logout">
+                        <input class="logout-btn" type="submit" value="Logout">
                     </form>
                     </p>
                 <?php endif; ?>
@@ -69,9 +72,9 @@ class Template
                     <h2>About us</h2>
                     <p>
                         With us you will find chocolate in all forms. <br>
-                        Luxury drinking chocolate, chocolate cakes and pastries.<br> 
-                        The factory was started in 2016 in Alvik, <br> 
-                        Stockholm and is run by Lorena, Firat and Moises.<br> 
+                        Luxury drinking chocolate, chocolate cakes and pastries.<br>
+                        The factory was started in 2016 in Alvik, <br>
+                        Stockholm and is run by Lorena, Firat and Moises.<br>
                         Make room for more chocolate in life. It gets better that way.
 
                     </p>
