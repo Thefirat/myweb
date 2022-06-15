@@ -1,0 +1,2 @@
+<?php
+ //Skapar products.php

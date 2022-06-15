@@ -1,0 +1,174 @@
+*{
+  margin: 20px;
+   
+}
+
+/*---------Header--------*/
+a{
+    color: rgb(77, 116, 103);
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #3225ea;
+    text-decoration: underline;
+    
+}
+
+/*
+html{
+    background: rgb(216, 247, 234);
+}
+*/
+h1{
+    font-weight: 300;
+    font-size: 5rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(155, 228, 204);
+    
+}
+
+h2{
+    color: rgb(77, 116, 103);
+}
+/*color: rgb(177, 234, 241);  fin färg*/
+
+.logged_in_as{
+display: flex;
+justify-content: flex-end;
+}
+
+.logout-btn{
+   color: rgb(77, 116, 103);
+   border-color: rgb(244, 205, 246);
+   font-weight: bold;
+}
+
+.logout-btn:hover{
+background-color: rgb(217, 133, 133);
+color: #f9e46b;
+font-size: large;
+}
+
+.header-slogan{
+display: flex;
+flex-direction: row;
+justify-content: center;
+
+}
+
+.header-text{
+    font-weight: 250;
+    font-size: 1.7rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(222, 216, 108);
+    display: flex;
+    align-items:flex-end;
+}
+
+
+.header-img{
+    border-radius: 10px;
+    width: 80rem;
+    height: 30rem;
+}
+
+
+
+
+/*--------home-page--------*/
+
+.our-store{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-chocolate{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+}
+
+.about-chocolate-img{
+    border-radius: 5px;
+    height: 35rem;
+    width: 40rem;
+}
+.text-about{
+    margin-top: 8rem;
+}
+
+.text-tasting{
+    margin-top: 8rem;
+}
+
+.get_products-btn{
+    color: #454024;
+    border: rgb(100, 144, 129);
+    background-color: rgb(174, 207, 197);
+    border-radius: 5px;
+    padding: 8px;
+}
+
+
+.tasting-chocolate{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+}
+
+.tasting-img{
+    border-radius: 5px;
+    height: 35rem;
+    width: 90rem;
+}
+.google-login-btn{
+    color: #454024;
+    border: rgb(100, 144, 129);
+    background-color: rgb(174, 207, 197);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+/*--------Admin---------*/
+
+.admin-create{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.register-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.edit-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-delete-user{
+    margin-top: -81.5px;
+    margin-left: 5rem;
+
+}
+/*--------Footer--------*/
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:  rgb(77, 116, 103);
+}
+

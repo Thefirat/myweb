@@ -5,18 +5,24 @@ require_once __DIR__ . '/../classes/UsersDatabase.php';
 $users_db = new UsersDatabase();
 $users = $users_db->get_all_users();
 
-Template::header('Admin page');
+Template::header('');
 
 ?>
-
-
-
-<hr>
-
+<div class="admin-create">
+<div class="create-products">
 <h2>Create Product</h2>
+<?php // CREATE PRODUCT ?>
 
 <hr>
 
+<h2>Products</h2>
+
+<?php // PRODUCTS LIST ?>
+
+</div>
+
+<hr>
+<div class="create-user">
 <h2>Create User</h2>
 <form action="/myweb/admin-scripts/post-create-user.php" method="post">
     <input type="text" name="username" placeholder="Username"><br>
@@ -33,12 +39,20 @@ Template::header('Admin page');
 <h2>Users</h2>
 <?php foreach($users as $user): ?>
     <p>
-    <a href="/myweb/pages/admin-user.php?id=<?= $user->id ?>">
+    <a href="/myweb/pages/admin-user.php?username=<?= $user->username ?>">
            <?= $user->username ?>
         </a>
+        <i><?= $user->role?></i>
     </p>
 
     <?php endforeach; ?>
+
+    </div>
+    </div>
+
+    
+    
     
 <?php
+
 Template::footer();

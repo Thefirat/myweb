@@ -60,6 +60,23 @@ class UsersDatabase extends Database
         return $success;
     }
 
+    //update
+    public function update(User $user){
+        $query = "UPDATE users SET `role`=? WHERE username=?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("ss", $user->role, $user->username);
+        return $stmt->execute();
+    }
+
+    //delete
+    public function delete($username){
+        $query = "DELETE FROM users WHERE username = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("s", $username);
+
+        return $stmt->execute();
+    }
+
    //skapa funktionen för google  get_google_user_id
    public function get_google_user_id(User $user)
    {
