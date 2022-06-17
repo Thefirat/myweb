@@ -4,6 +4,29 @@ require_once __DIR__ . '/Product.php';
 
 class ProductsDatabase extends Database{
     //get_one
+    public function get_one($id){
+        $query = "SELECT * FROM products WHERE id = ? ";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $db_product = mysqli_fetch_assoc($result);
+
+        $product = null;
+
+        if($db_product ){
+            $product = new Product(
+                $db_product["product-name"],
+                $db_product["product-description"],
+                $db_product["price"],
+                $db_product["image"],
+                $id
+
+            );
+        }
+        return $product;
+    }
 
 
     //get_all

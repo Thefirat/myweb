@@ -38,7 +38,7 @@ class Template
                 <a href="/myweb/pages/products.php"><i class="bi bi-boxes"></i>Products</a>
                 <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Cart (<?= $cart_count ?>)</a>
                 <?php if (!$is_logged_in) : ?>
-                    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login</a>
+                    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login/Register</a>
 
                 <?php elseif ($is_admin) : ?>
                     <a href="/myweb/pages/admin.php"> <i class="bi bi-key"></i>Admin Page</a>

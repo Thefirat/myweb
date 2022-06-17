@@ -1,24 +1,33 @@
 <?php
+require_once __DIR__ . "/../classes/Product.php";
 require_once __DIR__ . '/../classes/Template.php';
 
+
+$products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
+ 
 
 Template::header('');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChocoLoco</title>
-    <link rel="stylesheet" href="/assets/style.css">
-</head>
-<body>
-    
-</body>
-</html>
+<div id="product-details" hidden>
+    <img src="" id="product-img" height="70" width="70">
+    <p id="product-name"></p>
+    <p id="product-description"></p>
+    <p id="product-price"></p>
 
+</div>
+
+<?php foreach($products as $product) : ?>
+
+    <div>
+        <img src="<?= $product->img_url?>" id="product-img" height="70" width="70">
+        <b><?= $product->name ?></b>
+        <b><?= $product->price ?></b>
+        <p><?= $product->description ?></p>
+    </div>
+    
 <?php
+endforeach;
+
 
 Template::footer();
