@@ -3,13 +3,16 @@ require_once __DIR__ . '/../classes/Template.php';
 require_once __DIR__ . '/../classes/Product.php';
 require_once __DIR__ . "/../classes/ProductsDatabase.php";
 require_once __DIR__ . '/../classes/UsersDatabase.php';
+require_once __DIR__ . "/../classes/OrdersDatabase.php";
 
 $users_db = new UsersDatabase();
 $users = $users_db->get_all_users();
 
 $products_db = new ProductsDatabase();
-
 $products = $products_db->get_all();
+
+$orders_db = new OrdersDatabase();
+$orders = $orders_db->get_order_by_user_id($id);
 
 Template::header('');
 
@@ -70,8 +73,18 @@ Template::header('');
     </div>
     </div>
 
-    
-    
+    <hr>
+
+<h2>Orders</h2>
+
+<?php foreach($orders as $order): ?>
+    <p>
+    <?= $order->date ?>   
+        <i><?= $order->status?></i>
+    </p>
+    <button>Mark as send</button> 
+
+    <?php endforeach; ?>
     
 <?php
 
