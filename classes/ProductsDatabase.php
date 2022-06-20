@@ -72,5 +72,26 @@ class ProductsDatabase extends Database{
 
     }
     //update
+
+    public function update (Product $product, $id){
+
+        $query = "UPDATE products SET `product-name`=?, `product-description`=?, price=?,`image`=? WHERE id=?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("ssisi", $product->name, $product->description, $product->price, $product->img_url, $id);
+
+        return $stmt->execute();
+    }
     //delete
+
+    public function delete($id){
+        $query = "DELETE FROM products WHERE id = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("i", $id);
+
+        return $stmt->execute();
+    }
 }
