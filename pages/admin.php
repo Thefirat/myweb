@@ -1,9 +1,15 @@
 <?php
 require_once __DIR__ . '/../classes/Template.php';
+require_once __DIR__ . '/../classes/Product.php';
+require_once __DIR__ . "/../classes/ProductsDatabase.php";
 require_once __DIR__ . '/../classes/UsersDatabase.php';
 
 $users_db = new UsersDatabase();
 $users = $users_db->get_all_users();
+
+$products_db = new ProductsDatabase();
+
+$products = $products_db->get_all();
 
 Template::header('');
 
@@ -24,7 +30,13 @@ Template::header('');
 
 <h2>Products</h2>
 
-<?php // PRODUCTS LIST ?>
+<?php foreach ($products as $product) : ?>
+    <p>
+        <a href="/myweb/pages/admin-product.php?id=<?= $product->id ?>">
+            <?= $product->name ?>
+        </a>
+    </p>
+<?php endforeach; ?>
 
 </div>
 
