@@ -76,6 +76,54 @@ class OrdersDatabase extends Database
             );
         }
         return $order;
-    }
+    } 
+
+
+    public function get_order_by_id($id)
+    {
+       $query = "SELECT *, orders.id AS `order-id` FROM `orders` 
+       JOIN product-orders ON product-orders.order-id = orders.`id`
+       WHERE orders.`id` = ?";
+
+       $stmt = mysqli_prepare($this->conn, $query);
+       $stmt->bind_param("i", $id);
+       $stmt->execute();
+       $result = $stmt->get_result();
+       $orders = mysqli_fetch_assoc($result);
+       return $orders;
+   } 
+
    
+
+  /*  
+   public function get_loans_by_user_id($user_id)
+   {
+       $query = "SELECT *, loans.id AS `loan-id` FROM `loans` 
+       JOIN books ON books.id = loans.`book-id`
+       WHERE loans.`user-id` = ?";
+
+       $stmt = mysqli_prepare($this->conn, $query);
+       $stmt->bind_param("i", $user_id);
+       $stmt->execute();
+       $result = $stmt->get_result();
+       $loans = mysqli_fetch_all($result, MYSQLI_ASSOC);
+       return $loans;
+   }
+
+   */
+  public function get_ordes_by_product_id($product_id)
+  {
+      $query = "SELECT *, products.id AS `product-id` FROM `products` 
+      JOIN product-orders ON product-orders.product-id = products.`id`
+      WHERE products.`id` = ?";
+
+      $stmt = mysqli_prepare($this->conn, $query);
+      $stmt->bind_param("i", $product_id);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+      return $orders;
+  }
+
+
 }
