@@ -4,7 +4,7 @@ class Database
 {
     private $host = "localhost";
     private $user = "root";
-    private $password = "root";
+    private $password = "";
     private $db = "myweb-db";
 
     protected $conn;
@@ -13,7 +13,7 @@ class Database
         $this->conn = new mysqli($this->host, $this->user, $this->password, $this->db);
 
         if (!$this->conn){
-            die("connection faild");
+            die("connection failed");
         }
     }
 }
