@@ -31,6 +31,7 @@ require_once __DIR__ . '/../classes/ContactsDatabase.php';
 
 ?>
 
+
 <style>
 .confirmation{
 	color: blue;
@@ -39,6 +40,14 @@ require_once __DIR__ . '/../classes/ContactsDatabase.php';
     padding: 10px;
     font-size: xx-large;
     text-align: center;
-    margin-top: 100px;        
+    margin: auto;
+    background-color: lightblue;
+    height: 100px;
+    width: 500px;      
+    display: block;
+    margin: 15px auto 15px;  
+    border-radius: 50px;
+    
+
 }
 </style>
