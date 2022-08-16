@@ -12,7 +12,7 @@ $products_db = new ProductsDatabase();
 $products = $products_db->get_all();
 
 $orders_db = new OrdersDatabase();
-$orders = $orders_db->get_order_by_user_id($id);
+$orders = $orders_db->get_ordes_by_product_id($product_id);
 
 Template::header('');
 
