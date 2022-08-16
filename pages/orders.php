@@ -9,8 +9,10 @@ Template::header("Order page");
 
 $orders_db = new OrdersDatabase();
 
-$orders = $orders_db->get_order_by_user_id($logged_in_user->id);?>
+$orders = $orders_db->get_order_by_user_id($logged_in_user->id);
 
+var_dump($logged_in_user->id);
+?>
 <h2>My  orders</h2>
 
 <?php foreach ((array) $orders as $order) : ?>

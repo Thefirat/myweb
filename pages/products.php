@@ -18,6 +18,7 @@ foreach($products as $product): ?>
 
     <img src="<?=$product->img_url ?>" width="50" height="50" alt="Product image">
     <b><?=$product->name ?></b>
+    <p><?=$product->description ?></p>
     <i><?=$product->price ?>kr</i>
 
     <form action="/myweb/scripts/post-add-to-cart.php" method="post">

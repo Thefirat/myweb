@@ -76,8 +76,6 @@ justify-content: center;
 }
 
 
-
-
 /*--------home-page--------*/
 
 .our-store{
@@ -162,6 +160,20 @@ justify-content: center;
     margin-top: -81.5px;
     margin-left: 7rem;
 
+}
+
+/*--------home-page--------*/
+
+.cart-product{
+    display: flex;
+    flex-direction: row;
+    border: solid black 10px;
+}
+
+.cart-total{
+    display: flex;
+    flex-direction: row;
+    border: solid black 10px;
 }
 
 /*--------Footer--------*/

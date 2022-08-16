@@ -94,4 +94,10 @@ class ProductsDatabase extends Database{
 
         return $stmt->execute();
     }
+
+    //Total price function
+
+    public function total_cart_price(){
+        
+    }
 }

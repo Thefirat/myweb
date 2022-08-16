@@ -7,9 +7,10 @@ $logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
 $is_admin = $is_logged_in && ($logged_in_user->role == 'admin');
 
 $products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
- 
 
 Template::header('');
+
+//$total = 0;
 ?>
 
 <div id="product-details" hidden>
@@ -22,25 +23,30 @@ Template::header('');
 
 <?php foreach($products as $product) : ?>
 
-    <div>
+    <div class="cart-product">
         <img src="<?= $product->img_url?>" id="product-img" height="70" width="70">
         <b><?= $product->name ?></b>
-        <b><?= $product->price ?></b>
+        <i><?= $product->price ?>Kr</i>
         <p><?= $product->description ?></p>
     </div>
+    <?php
 
-   <?php if (!$is_logged_in) : ?>
-                    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login to place order</a>
-
-                <?php elseif ($is_admin) : ?>
-                    <a href="/myweb/pages/orders.php"><i class="bi bi-box"></i>Place order</a>
-
-                <?php endif; ?>
-
-   
-    
-<?php
 endforeach;
 
+if (!$is_logged_in) : ?>
+    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login to place order</a>
+
+<?php elseif ($is_admin) : ?>
+    <a href="/myweb/pages/orders.php"><i class="bi bi-box"></i>Place order</a>
+
+<?php endif; ?> 
+
+<div class="cart-total">
+    <h2>Total:  <?= $sum = array_reduce($products,function($arr, $value){
+        return $arr + $value->price;
+    }) ?> </h2>
+</div>
+
+<?php
 
 Template::footer();
