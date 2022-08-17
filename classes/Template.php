@@ -37,6 +37,7 @@ class Template
                 <a href="/myweb"><i class="bi bi-house"></i>Home</a>
                 <a href="/myweb/pages/products.php"><i class="bi bi-boxes"></i>Products</a>
                 <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Cart (<?= $cart_count ?>)</a>
+                <a href="/myweb/pages/orders.php"><i class="bi bi-boxes"></i>My orders</a>
                 <a href="/myweb/pages/contact-us.php"><i class="bi bi-person-rolodex"></i>Contact Us</a>
 
                 <?php if (!$is_logged_in) : ?>

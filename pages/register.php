@@ -4,7 +4,6 @@ require_once __DIR__ . '/../google/google-config.php';
 require_once __DIR__ . '/../classes/UsersDatabase.php';
 
 
-
 Template::header('');
 
 $google_login_btn = '<a href="' . $google_client->createAuthUrl() . '" class="google-login-btn">Login with Google</a>';

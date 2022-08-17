@@ -52,7 +52,7 @@ class OrdersDatabase extends Database
 
     //Get by user id
     public function get_order_by_user_id($customer_id){
-        $query = "SELECT * FROM `orders`, users  WHERE `customer-id` = ? ";
+        $query = "SELECT * FROM `orders` WHERE `customer-id` = ? ";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
@@ -62,7 +62,7 @@ class OrdersDatabase extends Database
 
         $result = $stmt->get_result();
 
-        $db_orders = mysqli_fetch_assoc($result);
+        $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         $orders = [];
 
@@ -77,16 +77,17 @@ class OrdersDatabase extends Database
 
             $orders[] = $order;
         }
+        
         return $orders;
     }
 
     //create
     public function create(Order $order){
-        $query = "INSERT INTO orders (`user-id`, `status`, `order-date`) VALUES (?,?,?)";
+        $query = "INSERT INTO orders (`customer-id`, `status`, `order-date`) VALUES (?,?,?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("iss", $order->user_id, $order->status, $order->order_date);
+        $stmt->bind_param("iss", $order->customer_id, $order->status, $order->order_date);
 
         $success = $stmt->execute();
 
@@ -100,7 +101,7 @@ class OrdersDatabase extends Database
     }
 
     public function create_product_order($order_id, $product_id){
-        $query = "INSERT INTO `product-orders` (`order-id`, `pruduct-id`) VALUES (?,?)";
+        $query = "INSERT INTO `product-orders` (`order-id`, `product-id`) VALUES (?,?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("ii", $order_id, $product_id);

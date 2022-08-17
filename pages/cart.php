@@ -36,7 +36,10 @@ endforeach;
 if (!$is_logged_in) : ?>
     <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login to place order</a>
 
-<?php elseif ($is_admin) : ?>
+<?php else: ?>
+    <form action="/myweb/scripts/post-place-order.php" method="post">
+        <input class="btn" type="submit" value="Place order">
+    </form>
     <a href="/myweb/pages/orders.php"><i class="bi bi-box"></i>Place order</a>
 
 <?php endif; ?> 
