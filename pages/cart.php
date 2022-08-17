@@ -21,34 +21,36 @@ Template::header('');
 
 </div>
 
-<?php foreach($products as $product) : ?>
+<?php foreach ($products as $product) : ?>
 
     <div class="cart-product">
-        <img src="<?= $product->img_url?>" id="product-img" height="70" width="70">
+        <img src="<?= $product->img_url ?>" id="product-img" height="70" width="70">
         <b><?= $product->name ?></b>
         <i><?= $product->price ?>Kr</i>
         <p><?= $product->description ?></p>
     </div>
-    <?php
+<?php
 
 endforeach;
 
 if (!$is_logged_in) : ?>
     <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login to place order</a>
 
-<?php else: ?>
+<?php else : ?>
+
+    <div class="cart-total">
+        <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
+                        return $arr + $value->price;
+                    }) ?> </h2>
+    </div>
+
     <form action="/myweb/scripts/post-place-order.php" method="post">
         <input class="btn" type="submit" value="Place order">
     </form>
-    <a href="/myweb/pages/orders.php"><i class="bi bi-box"></i>Place order</a>
 
-<?php endif; ?> 
 
-<div class="cart-total">
-    <h2>Total:  <?= $sum = array_reduce($products,function($arr, $value){
-        return $arr + $value->price;
-    }) ?> </h2>
-</div>
+<?php endif; ?>
+
 
 <?php
 

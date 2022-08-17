@@ -167,13 +167,13 @@ justify-content: center;
 .cart-product{
     display: flex;
     flex-direction: row;
-    border: solid black 10px;
+    border: solid black 1px;
 }
 
 .cart-total{
     display: flex;
     flex-direction: row;
-    border: solid black 10px;
+    border: solid black 1px;
 }
 
 /*--------Footer--------*/

@@ -12,7 +12,7 @@ $products_db = new ProductsDatabase();
 $products = $products_db->get_all();
 
 $orders_db = new OrdersDatabase();
-
+$orders = $orders_db->get_all();
 
 Template::header('');
 
@@ -77,9 +77,10 @@ Template::header('');
 
 <h2>Orders</h2>
 
-<?php foreach($orders as $order): ?>
+<?php foreach($orders as $order):?>
     <p>
-    <?= $order->date ?>   
+    <b>#<?= $order->id ?></b>
+    <?= $order->order_date ?>   
         <i><?= $order->status?></i>
     </p>
     <button>Mark as send</button> 
