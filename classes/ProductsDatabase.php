@@ -54,6 +54,22 @@ class ProductsDatabase extends Database{
         return $products;
     }
 
+    //get by order id
+
+    public function get_by_order_id($order_id)
+    {
+        $query = "SELECT ` p.id, p.product-name, p.product-description, p.price, p.image` 
+        FROM `product-orders` AS po
+        JOIN products AS p ON `po`.`product-id`= p.id
+        WHERE po.`order-id = ?`";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        
+        
+    }
+
 
 
     //create
@@ -95,9 +111,5 @@ class ProductsDatabase extends Database{
         return $stmt->execute();
     }
 
-    //Total price function
-
-    public function total_cart_price(){
-        
-    }
+   
 }
