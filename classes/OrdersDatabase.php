@@ -66,7 +66,7 @@ class OrdersDatabase extends Database
 
         $orders = [];
 
-     foreach ($db_orders as $db_order){
+     foreach ( (array)$db_orders as $db_order){
 
             $order = new Order(
                 $db_order["customer-id"], 
@@ -89,6 +89,7 @@ class OrdersDatabase extends Database
         $stmt->bind_param("iss", $order->user_id, $order->status, $order->order_date);
 
         $success = $stmt->execute();
+
 
         if($success){
             return $stmt->insert_id;
@@ -125,6 +126,8 @@ class OrdersDatabase extends Database
    }
 
    */
+
+
   public function get_ordes_by_product_id($product_id)
   {
       $query = "SELECT *, products.id AS `product-id` FROM `products` 

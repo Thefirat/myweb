@@ -4,7 +4,7 @@ class Database
 {
     private $host = "localhost";
     private $user = "root";
-    private $password = "";
+    private $password = "root";
     private $db = "myweb-db";
 
     protected $conn;

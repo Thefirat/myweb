@@ -95,9 +95,35 @@ class ProductsDatabase extends Database{
         return $stmt->execute();
     }
 
-    //Total price function
 
-    public function total_cart_price(){
-        
+    public function get_by_order_id($order_id){
+        $query = "SELECT * FROM `product-orders`, products WHERE `order-id` = ? AND `product-orders`.`product-id` = products.id";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("i", $order_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $db_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $products = [];
+
+        foreach ($db_products as $db_product) {
+           $db_id = $db_product["id"];
+           $db_name = $db_product["product-name"];
+           $db_description = $db_product["product-description"];
+           $db_price = $db_product["price"];
+           $db_img_url = $db_product["image"];
+
+              
+           
+        $products [] = new Product($db_name, $db_description, $db_price,  $db_img_url, $db_id);
+        }
+        return $products;
+
     }
+
 }
