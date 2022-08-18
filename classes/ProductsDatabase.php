@@ -130,5 +130,4 @@ class ProductsDatabase extends Database{
         return $stmt->execute();
     }
 
-   
 }

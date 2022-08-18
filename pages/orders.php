@@ -30,11 +30,7 @@ $products = $products_db-> get_by_order_id($logged_in_user->id);
         <b><?= $order->order_date ?></b>
         <b>[<?= $order->status ?>] </b><br>
 
-    <?php foreach ( $products as $product) : ?>
-    <?= $product->name ?> 
-    <?= $product->price ?>Kr  <br>
-
-    <?php endforeach;?>
+   
     <div>
         <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
                         return $arr + $value->price;

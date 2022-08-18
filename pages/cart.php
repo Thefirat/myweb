@@ -10,6 +10,7 @@ $products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
 Template::header('');
 
+
 //$total = 0;
 ?>
 

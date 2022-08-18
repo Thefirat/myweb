@@ -8,6 +8,10 @@ $is_logged_in = isset($_SESSION['user']);
 $cart = $_SESSION['cart'];
 $logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
 
+if(!$cart){
+    header("Location: /myweb/pages/cart.php");
+}
+
 /*
 $success = false;
 
