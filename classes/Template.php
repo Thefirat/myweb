@@ -37,7 +37,9 @@ class Template
                 <a href="/myweb"><i class="bi bi-house"></i>Home</a>
                 <a href="/myweb/pages/products.php"><i class="bi bi-boxes"></i>Products</a>
                 <a href="/myweb/pages/cart.php"><i class="bi bi-bag"></i>Cart (<?= $cart_count ?>)</a>
-                <a href="/myweb/pages/orders.php"><i class="bi bi-boxes"></i>My orders</a>
+                <?php if($is_logged_in) : ?>
+                    <a href="/myweb/pages/orders.php"><i class="bi bi-boxes"></i>My orders</a>
+                <?php endif; ?>
                 <a href="/myweb/pages/contact-us.php"><i class="bi bi-person-rolodex"></i>Contact Us</a>
 
                 <?php if (!$is_logged_in) : ?>
@@ -45,8 +47,10 @@ class Template
 
                 <?php elseif ($is_admin) : ?>
                     <a href="/myweb/pages/admin.php"> <i class="bi bi-key"></i>Admin Page</a>
+                    
 
                 <?php endif; ?>
+                
             </nav>
             <div class="logged_in_as">
                 <?php if ($is_logged_in) : ?>
