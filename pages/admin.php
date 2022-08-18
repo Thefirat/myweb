@@ -87,6 +87,15 @@ Template::header('');
         <?= $order->id ?><br>
         <?= $order->order_date ?><br>
         <i><?= $order->status ?></i>
+        <form action="/myweb/admin-scripts/post-edit-order.php" method="post">
+            <input type="hidden" name="id" value="<?= $order->id ?>">
+            <select name="status">
+                <option disabled selected>Status</option>
+                <option value="waiting">Waiting</option>
+                <option value="send">Send</option>
+            </select>
+            <input type="submit" value="Edit">
+        </form>
     </div>
 
 <?php endforeach; ?>
