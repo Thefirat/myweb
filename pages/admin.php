@@ -83,6 +83,7 @@ Template::header('');
     <?= $order->order_date ?>   
         <i><?= $order->status?></i>
     </p>
+    
     <button>Mark as send</button> 
 
     <?php endforeach; ?>

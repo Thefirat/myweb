@@ -6,6 +6,7 @@ require_once __DIR__ . '/../classes/UsersDatabase.php';
 
 Template::header('');
 
+
 $google_login_btn = '<a href="' . $google_client->createAuthUrl() . '" class="google-login-btn">Login with Google</a>';
 
 
@@ -21,11 +22,16 @@ $google_login_btn = '<a href="' . $google_client->createAuthUrl() . '" class="go
     <input type="password" name="confirm-password" placeholder="Confirm Password"><br>
     <input type="submit" value="Register">
 </form>
+<?php if(isset($_GET["register"]) && $_GET["register"] == "success"){
+    echo "<h2>User registered, please log in!</h2>";
+
+}?>
 </div>
+
 <hr>
 
-<div>
 
+<div>
 <h2>Login</h2>
 
 <form action="/myweb/scripts/post-login.php" method="post">

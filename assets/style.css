@@ -17,11 +17,6 @@ a:hover{
     
 }
 
-/*
-html{
-    background: rgb(216, 247, 234);
-}
-*/
 h1{
     font-weight: 300;
     font-size: 5rem;
@@ -174,6 +169,28 @@ justify-content: center;
     display: flex;
     flex-direction: row;
     border: solid black 1px;
+}
+
+/*--------Products --------*/
+
+.product{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+article.product {
+    width: 25%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+article.product>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /*--------Footer--------*/

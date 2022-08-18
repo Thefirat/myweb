@@ -58,19 +58,38 @@ class ProductsDatabase extends Database{
 
     public function get_by_order_id($order_id)
     {
-        $query = "SELECT ` p.id, p.product-name, p.product-description, p.price, p.image` 
-        FROM `product-orders` AS po
-        JOIN products AS p ON `po`.`product-id`= p.id
-        WHERE po.`order-id = ?`";
+        $query = "SELECT po.id, po.`order-id`, u.username, p.`product-name`, p.`product-description`, p.price,  p.`image`, o.`customer-id`, o.`order-date`, o.`status` FROM `product-orders` AS po
+        JOIN orders AS o ON po.`order-id` = o.id 
+        JOIN users AS u ON o.`customer-id` = u.id
+        JOIN products AS p ON po.`product-id` = p.id
+        WHERE o.`customer-id` = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("i", $order_id);
         $stmt->execute();
+        $result = $stmt->get_result();
+
+        $db_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $products = [];
+
+     foreach ($db_products as $db_product){
+
+            $product = new Product(
+                $db_product["product-name"],
+                $db_product["product-description"],
+                $db_product["price"],
+                $db_product["image"],
+            
+            );
+
+            $products[] = $product;
+        }
         
-        
+        return $products;
     }
-
-
+    
+        
 
     //create
 

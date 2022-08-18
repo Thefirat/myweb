@@ -37,7 +37,7 @@ if(
  //felmedelande eller redirect
  
  if($success){
-     header("location: /myweb");
+     header("location: /myweb/pages/register.php?register=success");
  }
  else{
      die("Error saving user");
