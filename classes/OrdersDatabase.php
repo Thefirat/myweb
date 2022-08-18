@@ -102,7 +102,6 @@ class OrdersDatabase extends Database
 
     public function create_product_order($order_id, $product_id){
         $query = "INSERT INTO `product-orders` (`order-id`, `product-id`) VALUES (?,?)";
-
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("ii", $order_id, $product_id);
         $success = $stmt->execute();
@@ -112,12 +111,12 @@ class OrdersDatabase extends Database
    
 
 
+
   public function get_ordes_by_product_id($product_id)
   {
       $query = "SELECT *, products.id AS `product-id` FROM `products` 
       JOIN product-orders ON product-orders.product-id = products.`id`
       WHERE products.`id` = ?";
-
       $stmt = mysqli_prepare($this->conn, $query);
       $stmt->bind_param("i", $product_id);
       $stmt->execute();
