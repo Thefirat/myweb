@@ -48,7 +48,8 @@ class OrdersDatabase extends Database
         }
         return $success;
 
-    }*/
+    }
+    */
 
     //Get by user id
     public function get_order_by_user_id($customer_id){
@@ -91,7 +92,6 @@ class OrdersDatabase extends Database
 
         $success = $stmt->execute();
 
-
         if($success){
             return $stmt->insert_id;
         }
@@ -111,23 +111,6 @@ class OrdersDatabase extends Database
     }
    
 
-  /*  
-   public function get_loans_by_user_id($user_id)
-   {
-       $query = "SELECT *, loans.id AS `loan-id` FROM `loans` 
-       JOIN books ON books.id = loans.`book-id`
-       WHERE loans.`user-id` = ?";
-
-       $stmt = mysqli_prepare($this->conn, $query);
-       $stmt->bind_param("i", $user_id);
-       $stmt->execute();
-       $result = $stmt->get_result();
-       $loans = mysqli_fetch_all($result, MYSQLI_ASSOC);
-       return $loans;
-   }
-
-   */
-
 
   public function get_ordes_by_product_id($product_id)
   {
@@ -142,6 +125,7 @@ class OrdersDatabase extends Database
       $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
       return $orders;
   }
+
 
 
 }

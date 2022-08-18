@@ -12,7 +12,7 @@ $products_db = new ProductsDatabase();
 $products = $products_db->get_all();
 
 $orders_db = new OrdersDatabase();
-//$orders = $orders_db->get_ordes_by_product_id($product_id);
+$orders = $orders_db->get_all();
 
 
 
@@ -81,12 +81,13 @@ Template::header('');
 
 <?php foreach($orders as $order): ?>
     <p>
-    <?= $order->date ?>   
+    <?= $order->order_date ?>   
         <i><?= $order->status?></i>
     </p>
-    <button>Mark as send</button> 
-
+    <button>Mark as send</button>    
     <?php endforeach; ?>
+
+    
     
 <?php
 
