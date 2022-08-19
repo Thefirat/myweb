@@ -27,8 +27,9 @@ Template::header('');
     <div class="cart-product">
         <img src="<?= $product->img_url ?>" id="product-img" height="70" width="70">
         <b><?= $product->name ?></b>
-        <i><?= $product->price ?>Kr</i>
         <p><?= $product->description ?></p>
+        <i><?= $product->price ?>Kr</i>
+        
     </div>
 <?php
 
@@ -42,12 +43,13 @@ if (!$is_logged_in) : ?>
     <div class="cart-total">
         <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
                         return $arr + $value->price;
-                    }) ?> </h2>
+                    }) ?>kr </h2>
+    <form action="/myweb/scripts/post-place-order.php" method="post">
+    <input class="btn-placeorder" type="submit" value="Place order">
+    </form>
     </div>
 
-    <form action="/myweb/scripts/post-place-order.php" method="post">
-        <input class="btn" type="submit" value="Place order">
-    </form>
+  
 
 
 <?php endif; ?>

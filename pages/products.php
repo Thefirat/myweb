@@ -10,13 +10,13 @@ $products = $products_db->get_all();
 
 Template::header("Products");?>
 
-<div class="product">
+<div class="products">
 <?php
 
 foreach($products as $product): ?>
 
 <article class="product">
-    <img src="<?=$product->img_url ?>" width="150" height="150" alt="Product image">
+    <img class="img-product" src="<?=$product->img_url ?>" width="120" height="120" alt="Product image">
 
     <div>
     <b><?=$product->name ?></b>
@@ -29,6 +29,7 @@ foreach($products as $product): ?>
     </form>
 
 </div>
+</article>
 
 <?php
 
