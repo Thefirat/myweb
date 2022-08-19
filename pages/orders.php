@@ -23,31 +23,30 @@ $products = $products_db-> get_by_order_id($logged_in_user->id);
 ?>
 <h2>My  orders</h2>
 
+<?php
+if (!$is_logged_in) : ?>
+    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login/register to place order</a>
+   
+<?php endif; ?> 
+
+
 <?php foreach ( $orders as $order) : ?>
 
     <p>
         <b>#<?= $order->id ?></b>
         <b><?= $order->order_date ?></b>
         <b>[<?= $order->status ?>] </b><br>
-
-   
-    <div>
-        <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
-                        return $arr + $value->price;
-                    }) ?> </h2>
-    </div>
         
     </p> 
 
     <?php endforeach;?>
 
+    <div>
+        <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
+                        return $arr + $value->price;
+                    }) ?> </h2>
+    </div>
 
-    <?php
-if (!$is_logged_in) : ?>
-    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login/register to place order</a>
-   
-
-<?php endif; ?> 
     
 <?php
 
