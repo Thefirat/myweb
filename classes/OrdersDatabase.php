@@ -106,4 +106,16 @@ class OrdersDatabase extends Database
         $success = $stmt->execute();
         return $success;
     }
+/* RADERA EN ORDER
+
+    public function delete_order($id)
+    {
+        $query = "DELETE FROM `orders` WHERE id = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("i", $id);
+
+        return $stmt->execute();
+    }*/
 }

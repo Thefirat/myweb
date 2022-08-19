@@ -35,11 +35,11 @@ if (!$is_logged_in) : ?>
     <p>
         <b>#<?= $order->id ?></b>
         <b><?= $order->order_date ?></b>
-        <b>[<?= $order->status ?>] </b><br>
-        
+        <b>[<?= $order->status ?>] </b><br>   
     </p> 
 
     <?php endforeach;?>
+
 
     <div>
         <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {

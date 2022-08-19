@@ -80,8 +80,8 @@ Template::header('');
 
 <?php foreach ($orders as $order) : ?>
     <div>
-        <?= $order->id ?><br>
-        <?= $order->order_date ?><br>
+        <b>#<?= $order->id ?></b>
+        <?= $order->order_date ?>
         <i><?= $order->status ?></i>
         <form action="/myweb/admin-scripts/post-edit-order.php" method="post">
             <input type="hidden" name="id" value="<?= $order->id ?>">
@@ -97,16 +97,6 @@ Template::header('');
 <?php endforeach; ?>
 
 
-<?php foreach($orders as $order):?>
-    <p>
-    <b>#<?= $order->id ?></b>
-    <?= $order->order_date ?>   
-        <i><?= $order->status?></i>
-    </p>
-    
-    <button>Mark as send</button> 
-
-<?php
-endforeach; 
+<?php 
 
 Template::footer();

@@ -6,7 +6,7 @@ $success = false;
 
 if(isset($_POST["status"]) && isset($_POST["id"])){
 $orders_db = new OrdersDatabase();
-$success = $orders_db->update_order_status($_POST["id"], $_POST["status"]);
+$success = $orders_db->update_order_status($_POST["status"], $_POST["id"]);
 }
 
 
