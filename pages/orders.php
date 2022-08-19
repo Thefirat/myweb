@@ -51,3 +51,5 @@ if (!$is_logged_in) : ?>
 <?php
 
     Template::footer();
+
+    echo "Hello World";
