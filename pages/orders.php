@@ -17,7 +17,9 @@ $orders_db = new OrdersDatabase();
 $orders = $orders_db->get_order_by_user_id($logged_in_user->id);
 
 $products_db = new ProductsDatabase();
-$products = $products_db-> get_by_order_id($logged_in_user->id);
+
+$all_products = [];
+
 
 
 ?>
@@ -39,14 +41,30 @@ if (!$is_logged_in) : ?>
         
     </p> 
 
+    
+   <?php $products = $products_db-> get_by_order_id($order->id);?>
+   
+
+
+    <?php foreach ( $products as $product) : ?>
+        <?php array_push($all_products, $product); ?>
+        <p>
+        <img src="<?=$product->img_url ?>" width="50" height="50" alt="Product image">
+        <b><?=$product->name ?></b>
+        <b><?=$product->price ?>kr</b>
+        </p>
+
+    <?php endforeach; ?>
+    <hr>
+    
     <?php endforeach; ?>
 
-    
+    <?php $products = $products_db-> get_by_order_id($logged_in_user->id); ?>
 
     <div>
-        <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
+        <h2>Total: <?= $sum = array_reduce($all_products, function ($arr, $value) {
                         return $arr + $value->price;
-                    }) ?> </h2>
+                    })  ?> </h2>
     </div>
 
     

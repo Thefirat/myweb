@@ -4,9 +4,9 @@ require_once __DIR__ . "/force-admin.php";
 
 $success = false;
 
-if(isset($_POST["status"]) && isset($_POST["id"])){
+if(isset($_POST["id"]) && isset($_POST["status"])){
 $orders_db = new OrdersDatabase();
-$success = $orders_db->update_order_status($_POST["status"], $_POST["id"]);
+$success = $orders_db->update_order_status($_POST["id"], $_POST["status"]);
 }
 
 

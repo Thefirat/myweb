@@ -62,7 +62,7 @@ class ProductsDatabase extends Database{
         JOIN orders AS o ON po.`order-id` = o.id 
         JOIN users AS u ON o.`customer-id` = u.id
         JOIN products AS p ON po.`product-id` = p.id
-        WHERE o.`customer-id` = ?";
+        WHERE po.`order-id` = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("i", $order_id);
