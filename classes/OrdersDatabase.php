@@ -40,7 +40,9 @@ class OrdersDatabase extends Database
         JOIN orders AS o ON po.`order-id` = o.id 
         JOIN users AS u ON o.`customer-id` = u.id
         WHERE o.`customer-id` = ?
+        group by  po.`order-id`
         group by  po.`order-id`";
+        
         
 
         $stmt = mysqli_prepare($this->conn, $query);
