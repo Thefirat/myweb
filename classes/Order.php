@@ -6,6 +6,9 @@ class Order
     public $customer_id;
     public $status;
     public $order_date;
+   
+
+    
 
 
     public function __construct($customer_id, $status, $order_date, $id = 0)

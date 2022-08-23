@@ -39,7 +39,9 @@ class OrdersDatabase extends Database
         $query = "SELECT po.id, po.`order-id`, u.username, o.`customer-id`, o.`order-date`, o.`status` FROM `product-orders` AS po
         JOIN orders AS o ON po.`order-id` = o.id 
         JOIN users AS u ON o.`customer-id` = u.id
-        WHERE o.`customer-id` = ?";
+        WHERE o.`customer-id` = ?
+        group by  po.`order-id`";
+        
 
         $stmt = mysqli_prepare($this->conn, $query);
 
@@ -59,7 +61,8 @@ class OrdersDatabase extends Database
                 $db_order["customer-id"],
                 $db_order["status"],
                 $db_order["order-date"],
-                $db_order["id"]
+                $db_order["order-id"]
+
             );
 
             $orders[] = $order;
