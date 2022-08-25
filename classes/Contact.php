@@ -8,13 +8,15 @@ Class Contact {
     public $message;
     public $reply;
 
-    public function __construct($username, $email, $contact, $message, $id=0, $reply = 0)
+
+    public function __construct($username, $email, $contact, $message, $id=0, $reply = "")
+
     {
         if($id > 0){
             $this->id = $id;
         }
 
-        
+
         $this->username = $username;
         $this->email = $email;
         $this->contact = $contact;

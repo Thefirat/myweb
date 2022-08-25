@@ -20,6 +20,7 @@ $orders = $orders_db->get_all();
 $messages_db = new ContactsDatabase();
 $messages = $messages_db->get_all_messages();
 
+
 Template::header('');
 
 ?>
@@ -105,29 +106,40 @@ Template::header('');
 
 
     </div>
+    <hr>
 
 <?php endforeach; ?>
 
 
         <div class="container">
         <div class="text">
-            <h1 class="text-center">Customer Emails</h1>        
-            <hr class="w-25 m-auto bg-dark">    
+            <h2 class="text-center">Customer Emails</h2>           
         </div>
-        <form action="/myweb/admin-scripts/answer-form.php" method="POST" autocomplete="off">
-           
+        
             <?php foreach ($messages as $message)  : ?>
-            <div>
+
+                <div>
                 <h3>Message ID: <?= $message->id?><br>
                 <h3>Username: <?= $message->username?><br>
                 <h3>Email:<?= $message->email?><br>
             </div>
 
+            <form action="/myweb/admin-scripts/post-answer-form.php" method="POST" autocomplete="off">
+            <input type="hidden" name="id" value="<?= $message->id?>">
+           
             <div class="reply"> 
                 <h3>Message: </h3><i><?= $message->message?></i><br>                  
-                <textarea name="message" id="message" class="form-control" cols="30" rows="5"></textarea><br>
+                <textarea name="reply" id="message" class="form-control" cols="30" rows="5"></textarea><br>
+                
                 <button class="btn btn-success">Reply</button>               
             </div>  
+
+            <div> 
+                <h3>Admin: </h3><i><?= $message->reply?></i><br>                  
+                <textarea name="reply" id="message" class="form-control" cols="30" rows="5"></textarea><br>
+                
+                <button class="btn btn-success">Reply</button>               
+            </div> 
              
             
         <?php endforeach; ?>

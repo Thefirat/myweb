@@ -1,9 +1,13 @@
 <?php
 require_once __DIR__ . '/../classes/Template.php';
+require_once __DIR__ . "/../classes/ContactsDatabase.php";
 
 $is_logged_in = isset($_SESSION['user']);
 $logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
 $is_admin = $is_logged_in && ($logged_in_user->role == 'admin');
+
+$messages_db = new ContactsDatabase();
+$messages = $messages_db->get_all_messages();
 
 Template::header('');
 
@@ -46,7 +50,37 @@ Template::header('');
         
     </div>
 
+    
+    <?php foreach ($messages as $message)  : ?>
+
+<div>
+<h3>Message ID: <?= $message->id?><br>
+<h3>Username: <?= $message->username?><br>
+<h3>Email:<?= $message->email?><br>
+</div>
+
+<form action="/myweb/admin-scripts/post-answer-form.php" method="POST" autocomplete="off">
+<input type="hidden" name="id" value="<?= $message->id?>">
+
+<hr>
+<div class="reply"> 
+<h3>Message: </h3><i><?= $message->message?></i><br>                                
+</div>  
+
+<div> 
+<h3>Admin: </h3><i><?= $message->reply?></i><br>                                
+</div> 
+<hr>
+
+
+<?php endforeach; ?>
+
+
+</form>
+
     <?php endif; ?>
+
+
 
 
 
