@@ -40,6 +40,7 @@ Template::header('');
                 <textarea name="message" id="message" class="form-control" cols="30" rows="5"></textarea>
             </div>
             <button class="btn btn-success">Send Message</button>
+
         </form>
 
         

@@ -6,8 +6,9 @@ Class Contact {
     public $email;
     public $contact;
     public $message;
+    public $reply;
 
-    public function __construct($username, $email, $contact, $message, $id=0)
+    public function __construct($username, $email, $contact, $message, $id=0, $reply = 0)
     {
         if($id > 0){
             $this->id = $id;
@@ -18,6 +19,7 @@ Class Contact {
         $this->email = $email;
         $this->contact = $contact;
         $this->message = $message;
+        $this->reply = $reply;
 
     }
 
