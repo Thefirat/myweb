@@ -1,21 +1,22 @@
 <?php
 require_once __DIR__ . '/../classes/Template.php';
 
+$is_logged_in = isset($_SESSION['user']);
+$logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
+$is_admin = $is_logged_in && ($logged_in_user->role == 'admin');
+
 Template::header('');
 
 ?>
 
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  </head>
-    <title>Contact Us</title>
-  </head>
-  <body>
+<?php
+
+  if (!$is_logged_in) : ?>
+    <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login to send message</a>
+
+<?php else : ?>
+
     <div class="container">
         <div class="text">
             <h1 class="text-center">Contact Us</h1>        
@@ -40,9 +41,11 @@ Template::header('');
             </div>
             <button class="btn btn-success">Send Message</button>
         </form>
+
+        
     </div>
-  </body>
-</html>
+
+    <?php endif; ?>
 
 
 

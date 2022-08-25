@@ -4,6 +4,8 @@ require_once __DIR__ . '/../classes/Product.php';
 require_once __DIR__ . "/../classes/ProductsDatabase.php";
 require_once __DIR__ . '/../classes/UsersDatabase.php';
 require_once __DIR__ . "/../classes/OrdersDatabase.php";
+require_once __DIR__ . "/../classes/ContactsDatabase.php";
+
 
 $users_db = new UsersDatabase();
 $users = $users_db->get_all_users();
@@ -13,6 +15,10 @@ $products = $products_db->get_all();
 
 $orders_db = new OrdersDatabase();
 $orders = $orders_db->get_all();
+
+//Contact page 
+$messages_db = new ContactsDatabase();
+$messages = $messages_db->get_all_messages();
 
 Template::header('');
 
@@ -101,6 +107,16 @@ Template::header('');
     </div>
 
 <?php endforeach; ?>
+
+<h2>User Emails</h2>
+<?php foreach ($messages as $message)  : ?>
+            <div class="cart-product">
+                <h3>Username: <?= $message->username?><br>
+                <h3>Email:<?= $message->email?><br>
+                <h3>Message:<?= $message->message?><br>               
+            </div>    
+            
+        <?php endforeach; ?>
 
 
 <?php

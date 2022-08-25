@@ -22,6 +22,30 @@ class ContactsDatabase extends Database{
        
     }
 
+    public function get_all_messages()
+    {
+        $query = "SELECT * FROM contacts";
+
+        $result = mysqli_query($this->conn, $query);
+
+        $db_messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $messages =  [];
+
+        foreach ($db_messages as $db_message) {
+            
+            $db_username = $db_message["Username"];
+            $db_email = $db_message["Email"];
+            $db_contact = $db_message["Contact"];
+            $db_message = $db_message["Message"];
+            
+
+            $messages[] = new Contact($db_username, $db_email, $db_contact, $db_message);
+        }
+
+        return $messages;
+    }
+
 }
 
     ?>
