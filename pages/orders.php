@@ -20,7 +20,7 @@ $products_db = new ProductsDatabase();
 
 $all_products = [];
 
-$total_price = 0;
+$order_value = 0;
 
 
 
@@ -48,7 +48,7 @@ if (!$is_logged_in) : ?>
 
     
     foreach ($products as $product) {
-        $total_price += $product->price;
+        $order_value += $product->price;
     } ?>
 
     <?php foreach ($products as $product) : ?>
@@ -61,7 +61,8 @@ if (!$is_logged_in) : ?>
 
 
     <?php endforeach; ?>
-    <b> Order value: <?= $total_price ?> kr</b>
+    <b> Order value: <?= $order_value ?> kr</b>
+    <?php $order_value = 0; ?>
     <hr>
 
 <?php endforeach; ?>

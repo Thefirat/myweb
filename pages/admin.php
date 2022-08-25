@@ -91,8 +91,8 @@ Template::header('');
             <input type="submit" value="Edit">
         </form>
 
-        <form action="/myweb/scripts/post-delete-order.php" method="post">
-            <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
+        <form action="/myweb/admin-scripts/post-delete-order.php" method="post">
+            <input type="hidden" name="id" value="<?= $order->id ?>">
             <input type="submit" value="Delete order">
 
         </form>

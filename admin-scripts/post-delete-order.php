@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . "/../classes/OrdersDatabase.php";
-
 require_once __DIR__ . "/force-admin.php";
 
 $success = false;
@@ -22,6 +21,4 @@ if ($success) {
 }
 
 
-
-echo "Hello World";
 
