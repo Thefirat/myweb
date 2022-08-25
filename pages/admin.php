@@ -114,10 +114,12 @@ Template::header('');
             <h1 class="text-center">Customer Emails</h1>        
             <hr class="w-25 m-auto bg-dark">    
         </div>
-        <form action="/myweb/admin-scripts/answer-form.php" method="POST" autocomplete="off">
-           
+        
             <?php foreach ($messages as $message)  : ?>
-            <div>
+            <form action="/myweb/admin-scripts/post-answer-form.php" method="POST" autocomplete="off">
+            <input type="hidden" name="id" value="<?= $message->id?>">
+           
+           <div>
                 <h3>Message ID: <?= $message->id?><br>
                 <h3>Username: <?= $message->username?><br>
                 <h3>Email:<?= $message->email?><br>
@@ -126,6 +128,7 @@ Template::header('');
             <div class="reply"> 
                 <h3>Message: </h3><i><?= $message->message?></i><br>                  
                 <textarea name="message" id="message" class="form-control" cols="30" rows="5"></textarea><br>
+                
                 <button class="btn btn-success">Reply</button>               
             </div>  
              

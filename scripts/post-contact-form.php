@@ -8,7 +8,7 @@ require_once __DIR__ . '/../classes/ContactsDatabase.php';
 
  
 
-    $contact = new Contact($_POST["username"], $_POST["email"], $_POST["contact"], $_POST["message"]);
+    $contact = new Contact($_POST["username"], $_POST["email"], $_POST["contact"], $_POST["message"], $_POST["reply"]);
 
     $contacts_db = new ContactsDatabase();
 

@@ -10,11 +10,24 @@ class ContactsDatabase extends Database{
     
 
     public function send_message(Contact $contact){
-        $query = "INSERT INTO contacts(username, email, contact, `message`) VALUES (?,?,?,?)";
+        $query = "INSERT INTO contacts(username, email, contact, `message`, reply) VALUES (?,?,?,?,?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssis", $contact->username, $contact->email, $contact->contact, $contact->message);
+        $stmt->bind_param("ssiss", $contact->username, $contact->email, $contact->contact, $contact->message, $contact->reply);
+
+        $success = $stmt->execute();
+
+        return $success;
+       
+    }
+
+    public function reply_message( $id, $reply){
+        $query = "UPDATE `contacts` SET `Reply` = '?' WHERE `contacts`. `id` = ?";     
+        
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("is", $id, $reply);
 
         $success = $stmt->execute();
 
