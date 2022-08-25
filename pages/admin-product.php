@@ -20,9 +20,6 @@ $products_db = new ProductsDatabase();
 
 $product = $products_db->get_one($_GET["id"]);
 
-// if($product == null){
-//     die("No product");
-// }
 
 Template::header("Update product");
 

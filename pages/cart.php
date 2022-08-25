@@ -27,10 +27,12 @@ Template::header('');
     <div class="cart-product">
         <img src="<?= $product->img_url ?>" id="product-img" height="70" width="70">
         <b><?= $product->name ?></b>
-        <p><?= $product->description ?></p>
-        <i><?= $product->price ?>Kr</i>
+        <i><?= $product->description ?></i>
+        <p><?= $product->price ?>Kr</p>
+
         
     </div>
+   
 <?php
 
 endforeach;
@@ -40,14 +42,27 @@ if (!$is_logged_in) : ?>
 
 <?php else : ?>
 
+    <?php if (!empty ($_SESSION["cart"])) : ?>
     <div class="cart-total">
         <h2>Total: <?= $sum = array_reduce($products, function ($arr, $value) {
                         return $arr + $value->price;
                     }) ?>kr </h2>
     <form action="/myweb/scripts/post-place-order.php" method="post">
     <input class="btn-placeorder" type="submit" value="Place order">
+    
+    </form>
+
+    <form action="/myweb/scripts/post-emty-cart.php" method="post">
+    <input class="btn-deleteorder" type="submit" value="Delete order">
+    
     </form>
     </div>
+
+    <?php else : ?>
+
+        <a href="/myweb/pages/products.php"><i class="bi bi-boxes"></i>Cart is empty click to get products!</a>
+
+    <?php endif; ?>
 
   
 

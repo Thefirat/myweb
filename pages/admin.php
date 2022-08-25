@@ -20,8 +20,6 @@ Template::header('');
 <div class="admin-create">
     <div class="create-products">
         <h2>Create Product</h2>
-        <?php // CREATE PRODUCT 
-        ?>
 
         <form action="/myweb/admin-scripts/post-create-product.php" method="post" enctype="multipart/form-data">
             <input type="text" name="product-name" placeholder="Name"><br>
@@ -82,7 +80,7 @@ Template::header('');
     <div>
         <b>#<?= $order->id ?></b>
         <?= $order->order_date ?>
-        <i><?= $order->status ?></i>
+        <b>[<?= $order->status ?>]</b>
         <form action="/myweb/admin-scripts/post-edit-order.php" method="post">
             <input type="hidden" name="id" value="<?= $order->id ?>">
             <select name="status">
@@ -92,11 +90,20 @@ Template::header('');
             </select>
             <input type="submit" value="Edit">
         </form>
+
+        <form action="/myweb/scripts/post-delete-order.php" method="post">
+            <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
+            <input type="submit" value="Delete order">
+
+        </form>
+
+
     </div>
 
 <?php endforeach; ?>
 
 
-<?php 
+<?php
+
 
 Template::footer();

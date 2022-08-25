@@ -163,7 +163,6 @@ justify-content: center;
 .cart-product{
     display: flex;
     flex-direction: row;
-    border-bottom: solid rgb(248, 221, 221);
    
     
 }
@@ -181,10 +180,17 @@ justify-content: center;
     padding: 7px;
 }
 
+.btn-deleteorder{
+    color: #454024;
+    border: rgb(31, 46, 41);
+    background-color: rgb(250, 188, 111);
+    padding: 7px;
+}
+
 .btn-placeorder:hover{
     padding: 9px;
     background-color: rgb(188, 238, 223);
-    border-color: rgb(231, 10, 243);
+    border-color: rgb(195, 2, 2);
     
 
 }

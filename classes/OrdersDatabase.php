@@ -110,9 +110,9 @@ class OrdersDatabase extends Database
         $success = $stmt->execute();
         return $success;
     }
-/* RADERA EN ORDER
+ //--------RADERA EN ORDER----------//
 
-    public function delete_order($id)
+    public function delete($id)
     {
         $query = "DELETE FROM `orders` WHERE id = ?";
 
@@ -121,5 +121,6 @@ class OrdersDatabase extends Database
         $stmt->bind_param("i", $id);
 
         return $stmt->execute();
-    }*/
+    }
 }
+
