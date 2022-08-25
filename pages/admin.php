@@ -108,16 +108,31 @@ Template::header('');
 
 <?php endforeach; ?>
 
-<h2>User Emails</h2>
-<?php foreach ($messages as $message)  : ?>
+
+        <div class="container">
+        <div class="text">
+            <h1 class="text-center">Customer Emails</h1>        
+            <hr class="w-25 m-auto bg-dark">    
+        </div>
+        <form action="/myweb/scripts/post-contact-form.php" method="POST" autocomplete="off">
+           
+            <?php foreach ($messages as $message)  : ?>
             <div class="cart-product">
+                <h3>Message ID: <?= $message->id?><br>
                 <h3>Username: <?= $message->username?><br>
                 <h3>Email:<?= $message->email?><br>
-                <h3>Message:<?= $message->message?><br>               
+                <h3>Message:<?= $message->message?><br>
+                <div class="reply">
+                <label for="message">Reply</label>
+                <textarea name="message" id="message" class="form-control" cols="30" rows="5"></textarea>
+            </div>
+            <button class="btn btn-success">Reply</button>               
             </div>    
             
         <?php endforeach; ?>
-
+            
+            
+        </form>
 
 <?php
 
