@@ -9,6 +9,7 @@ $success = false;
 
 if(isset($_POST["product-name"]) && isset($_POST["product-description"]) && isset($_POST["price"]) && isset($_GET["id"])){
 
+       
     $upload_directory = __DIR__ . "/../assets/uploads/"; // C:/wamp64/www/shop/admin-scripts/../assets/uploads/
 
     $upload_name= basename($_FILES["image"]["name"]); // katt.jpeg
