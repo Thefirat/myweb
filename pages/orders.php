@@ -20,56 +20,64 @@ $products_db = new ProductsDatabase();
 
 $all_products = [];
 
+$total_price = 0;
+
 
 
 ?>
-<h2>My  orders</h2>
+<h2>My orders</h2>
 
 <?php
 if (!$is_logged_in) : ?>
     <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login/register to place order</a>
-   
-<?php endif; ?> 
+
+<?php endif; ?>
 
 
-<?php foreach ( $orders as $order) : ?>
+<?php foreach ($orders as $order) : ?>
 
     <p>
-        <b>#<?= $order->id ?></b>
-        <b><?= $order->order_date ?></b>
-        <b>[<?= $order->status ?>] </b><br>  
-        
-    </p> 
+        <i>#<?= $order->id ?></i>
+        <i><?= $order->order_date ?></i>
+        <b>[<?= $order->status ?>] </b><br>
+
+    </p>
+
+
+    <?php $products = $products_db->get_by_order_id($order->id);
 
     
-   <?php $products = $products_db-> get_by_order_id($order->id);?>
-   
+    foreach ($products as $product) {
+        $total_price += $product->price;
+    } ?>
 
-
-    <?php foreach ( $products as $product) : ?>
+    <?php foreach ($products as $product) : ?>
         <?php array_push($all_products, $product); ?>
         <p>
-        <img src="<?=$product->img_url ?>" width="50" height="50" alt="Product image">
-        <b><?=$product->name ?></b>
-        <b><?=$product->price ?>kr</b>
+            <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
+            <i><?= $product->name ?></i>
+            <i><?= $product->price ?>kr</i>
         </p>
 
+
     <?php endforeach; ?>
+    <b> Order value: <?= $total_price ?> kr</b>
     <hr>
-    
-    <?php endforeach; ?>
 
-    <?php $products = $products_db-> get_by_order_id($logged_in_user->id); ?>
+<?php endforeach; ?>
 
-    <div>
-        <h2>Total: <?= $sum = array_reduce($all_products, function ($arr, $value) {
-                        return $arr + $value->price;
-                    })  ?> </h2>
-    </div>
+<?php $products = $products_db->get_by_order_id($logged_in_user->id); ?>
 
-    
+
+<div>
+    <h2>Total value: <?= $sum = array_reduce($all_products, function ($arr, $value) {
+                    return $arr + $value->price;
+                })  ?> Kr </h2>
+</div>
+
+
 <?php
 
-    Template::footer();
+Template::footer();
 
-    echo "Hello World";
+echo "Hello World";
