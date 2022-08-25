@@ -36,7 +36,8 @@ class OrdersDatabase extends Database
     //Get by user id
     public function get_order_by_user_id($customer_id)
     {
-        $query = "SELECT po.id, po.`order-id`, u.username, o.`customer-id`, o.`order-date`, o.`status` FROM `product-orders` AS po
+        $query = "SELECT po.id, po.`order-id`, u.username, o.`customer-id`, o.`order-date`, o.`status` 
+        FROM `product-orders` AS po
         JOIN orders AS o ON po.`order-id` = o.id 
         JOIN users AS u ON o.`customer-id` = u.id
         WHERE o.`customer-id` = ?
