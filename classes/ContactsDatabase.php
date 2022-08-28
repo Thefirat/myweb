@@ -48,7 +48,7 @@ class ContactsDatabase extends Database{
         var_dump($db_messages);
 
         foreach ($db_messages as $db_message) {
-            var_dump($db_message);
+    
 
             
             $db_id = $db_message["id"];
@@ -67,5 +67,3 @@ class ContactsDatabase extends Database{
     }
 
 }
-
-    ?>

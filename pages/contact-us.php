@@ -16,15 +16,15 @@ Template::header('');
 
 <?php
 
-  if (!$is_logged_in) : ?>
+if (!$is_logged_in) : ?>
     <a href="/myweb/pages/register.php"><i class="bi bi-people"></i>Login to send message</a>
 
 <?php else : ?>
 
     <div class="container">
         <div class="text">
-            <h1 class="text-center">Contact Us</h1>        
-            <hr class="w-25 m-auto bg-dark">    
+            <h1 class="text-center">Contact Us</h1>
+            <hr class="w-25 m-auto bg-dark">
         </div>
         <form action="/myweb/scripts/post-contact-form.php" method="POST" autocomplete="off">
             <div class="user">
@@ -47,36 +47,36 @@ Template::header('');
 
         </form>
 
-        
+
     </div>
 
-    
-    <?php foreach ($messages as $message)  : ?>
 
-<div>
-<h3>Message ID: <?= $message->id?><br>
-<h3>Username: <?= $message->username?><br>
-<h3>Email:<?= $message->email?><br>
-</div>
+    <?php foreach ($messages as $message) : ?>
 
-<form action="/myweb/admin-scripts/post-answer-form.php" method="POST" autocomplete="off">
-<input type="hidden" name="id" value="<?= $message->id?>">
+        <div>
+            <h3>Message ID: <?= $message->id ?><br>
+                <h3>Username: <?= $message->username ?><br>
+                    <h3>Email:<?= $message->email ?><br>
+        </div>
 
-<hr>
-<div class="reply"> 
-<h3>Message: </h3><i><?= $message->message?></i><br>                                
-</div>  
+        <form action="/myweb/admin-scripts/post-answer-form.php" method="POST" autocomplete="off">
+            <input type="hidden" name="id" value="<?= $message->id ?>">
 
-<div> 
-<h3>Admin: </h3><i><?= $message->reply?></i><br>                                
-</div> 
-<hr>
+            <hr>
+            <div class="reply">
+                <h3>Message: </h3><i><?= $message->message ?></i><br>
+            </div>
 
-
-<?php endforeach; ?>
+            <div>
+                <h3>Admin: </h3><i><?= $message->reply ?></i><br>
+            </div>
+            <hr>
 
 
-</form>
+        <?php endforeach; ?>
+
+
+        </form>
 
     <?php endif; ?>
 
@@ -89,6 +89,6 @@ Template::header('');
 
 
 
-<?php
+    <?php
 
-Template::footer();
+    Template::footer();
